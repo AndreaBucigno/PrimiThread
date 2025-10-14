@@ -4,34 +4,42 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Scanner tastiera= new Scanner(System.in);
-        System.out.println("quante pecore dovrai contare per addormentarti?....");
-        int count= tastiera.nextInt(); //.nextLine() per leggere la riga
-        //singolo thread
-        ContaPecore thr1 = new ContaPecore(count);
-        thr1.start();
+        Scanner scanner = new Scanner(System.in);
+        boolean x;
+        int number;
 
-        //thread padre è sveglio
-        for (int i = 0; i < 100; i++) {
-            System.out.println((i + 1) + " sono sveglio ");
-        }
-    }
-}
+        Cavallo pazzo = new Cavallo("pazzo");
+        Cavallo bianco = new Cavallo("bianco");
+        Cavallo piero = new Cavallo("piero");
+        Cavallo daniele = new Cavallo("daniele");
+        Cavallo marcello = new Cavallo("marcello");
 
-class ContaPecore extends Thread {
-    //variabile privata
-    private final int num_pecore;
-    //costruttore
-    public ContaPecore(int num){
-        super();
-        num_pecore=num;
-    }
-    @Override
-    public void run() {
-        setName("thread conta pecorelle");
-        System.out.println(Thread.currentThread().getName());
-        for (int i = 0; i < num_pecore; i++) {
-            System.out.println((i + 1) + " pecore ");
-        }
+            System.out.println("SleepTime per " + pazzo.HorseName());
+            pazzo.setSleepTime(scanner.nextInt());
+            scanner.nextLine();
+
+            System.out.println("SleepTime per " + bianco.HorseName());
+            bianco.setSleepTime(scanner.nextInt());
+            scanner.nextLine();
+
+            System.out.println("SleepTime per " + piero.HorseName());
+            piero.setSleepTime(scanner.nextInt());
+            scanner.nextLine();
+
+            System.out.println("SleepTime per " + daniele.HorseName());
+            daniele.setSleepTime(scanner.nextInt());
+            scanner.nextLine();
+
+            System.out.println("SleepTime per " + marcello.HorseName());
+            marcello.setSleepTime(scanner.nextInt());
+            scanner.nextLine();
+
+        pazzo.start();
+        bianco.start();
+        piero.start();
+        daniele.start();
+        marcello.start();
+
+
     }
 }
