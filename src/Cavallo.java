@@ -27,6 +27,9 @@ public class Cavallo extends Thread {
             }
             System.out.println(name + " cavalca - passo " +i);
         }
+        if(Main.getFirst() == null){
+            Main.setFirst(name);
+        }
     }
 
     protected int getSleepTime(){

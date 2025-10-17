@@ -11,7 +11,7 @@ public class Main {
         int condition;
 
         while(x){
-
+                System.out.println("__________________________________________________________________________");
                 System.out.println("1.Insert horse \n2.Insert sleepTime \n3.Start the race\n4.Exit");
                 System.out.println("enter the option:");
                 condition = scanner.nextInt();
@@ -41,11 +41,14 @@ public class Main {
                             }
                             continue;
                         }
+
                         break;
                     case 3:
                         for(Cavallo c : horses){
                             c.start();
                         }
+
+                        System.out.println("the winner is :"+first);
                         break;
 
                     case 4 :
@@ -58,5 +61,13 @@ public class Main {
 
         }
 
+    }
+
+    public static void setFirst(String t){
+        first = t;
+    }
+
+    public static String getFirst(){
+        return first;
     }
 }
