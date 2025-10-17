@@ -41,5 +41,6 @@ public class Cavallo extends Thread {
     public String HorseName(){
             return name;
     }
+
 }
 
