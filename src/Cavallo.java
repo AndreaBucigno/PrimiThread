@@ -34,7 +34,7 @@ public class Cavallo extends Thread {
     protected void setSleepTime(int sleepTime) {
         this.sleepTime = sleepTime;
     }
-    //
+    ///
 
     public String getHorseName() {
         return name;
