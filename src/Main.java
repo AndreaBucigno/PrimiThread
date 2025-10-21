@@ -53,6 +53,7 @@ public class Main {
                     for (Cavallo c : horses) {
                         c.start();
                     }
+                    //
                     for (Cavallo c : horses) {
                         try {
                             c.join();
