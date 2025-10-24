@@ -50,17 +50,30 @@ public class Main {
                     break;
 
                 case 3:
+                    if (horses.isEmpty()) {
+                        System.out.println("No horses in the race!");
+                        break;
+                    }
+
+                    Main.first = null;
+
+                    ArrayList<Cavallo> race = new ArrayList<>();
                     for (Cavallo c : horses) {
+                        race.add(new Cavallo(c.getHorseName()));  // fresh instance
+                        race.get(race.size() - 1).setSleepTime(c.getSleepTime());
+                    }
+
+                    for (Cavallo c : race) {
                         c.start();
                     }
-                    ////
-                    for (Cavallo c : horses) {
+                    for (Cavallo c : race) {
                         try {
                             c.join();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                     }
+
                     System.out.println("The winner is: " + first);
                     break;
 
