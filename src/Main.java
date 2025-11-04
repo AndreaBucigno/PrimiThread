@@ -1,5 +1,7 @@
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.*; // <-- per JFileChooser
 
 public class Main {
     static String first;
@@ -75,6 +77,9 @@ public class Main {
                     }
 
                     System.out.println("The winner is: " + first);
+
+                    //dopo la corsa, chiedi dove salvare il risultato
+                    salvaRisultatoSuFile("The winner is: " + first);
                     break;
 
                 case 4:
@@ -105,4 +110,31 @@ public class Main {
     public static synchronized String getFirst() {
         return first;
     }
+
+
+    // Metodo per scegliere un file e salvare il risultato
+
+    public static void salvaRisultatoSuFile(String testo) {
+        try {
+
+            JFileChooser fc = new JFileChooser();
+            fc.setDialogTitle("Scegli dove salvare il risultato");
+
+            int returnVal = fc.showSaveDialog(null);
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                File file = fc.getSelectedFile();
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+                    writer.write(testo);
+                    System.out.println("Risultato salvato in: " + file.getAbsolutePath());
+                } catch (IOException e) {
+                    System.out.println("Errore nel salvataggio: " + e.getMessage());
+                }
+            } else {
+                System.out.println("Salvataggio annullato.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
