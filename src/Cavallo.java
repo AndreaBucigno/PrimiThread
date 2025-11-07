@@ -54,9 +54,9 @@ public class Cavallo extends Thread {
         }
 
         // Aggiorna il vincitore in modo sincronizzato
-        synchronized (Main.class) {
-            if (Main.getFirst() == null) {
-                Main.setFirst(name);
+        synchronized (GaraCavalli.class) {
+            if (GaraCavalli.getFirst() == null) {
+                GaraCavalli.setFirst(name);
             }
         }
     }

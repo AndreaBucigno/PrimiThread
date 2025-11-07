@@ -4,7 +4,7 @@ import java.util.Scanner;
 import javax.swing.*; // Per JFileChooser
 
 /**
- * La classe {@code Main} rappresenta il punto di ingresso del programma che simula una corsa tra cavalli.
+ * La classe {@code GaraCavalli} rappresenta il punto di ingresso del programma che simula una corsa tra cavalli.
  * <p>
  * L'utente può inserire cavalli, impostare il loro tempo di attesa (sleep time),
  * avviare la corsa, azzoppare casualmente un cavallo o salvare il risultato su file.
@@ -25,7 +25,7 @@ import javax.swing.*; // Per JFileChooser
  * @author
  * @version 1.0
  */
-public class Main {
+public class GaraCavalli {
 
     /** Nome del cavallo vincitore della corsa. */
     static String first;
