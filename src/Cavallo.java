@@ -1,13 +1,45 @@
+/**
+ * La classe {@code Cavallo} rappresenta un cavallo che partecipa a una corsa simulata.
+ * <p>
+ * Estende la classe {@link Thread} per consentire l'esecuzione concorrente di più cavalli.
+ * Ogni cavallo ha un nome e un tempo di pausa (sleepTime) che determina la velocità di avanzamento.
+ * </p>
+ *
+ * <p>Esempio d'uso:</p>
+ * <pre>{@code
+ * Cavallo c1 = new Cavallo("Fulmine");
+ * c1.setSleepTime(500);
+ * c1.start();
+ * }</pre>
+ *
+ * @author
+ * @version 1.0
+ */
 public class Cavallo extends Thread {
 
+    /** Nome del cavallo. */
     private final String name;
+
+    /** Tempo di pausa tra un passo e l'altro (in millisecondi). */
     private int sleepTime;
 
+    /**
+     * Costruttore che inizializza un cavallo con il nome specificato.
+     *
+     * @param name nome del cavallo
+     */
     public Cavallo(String name) {
         super();
         this.name = name;
     }
 
+    /**
+     * Metodo principale del thread che simula la corsa del cavallo.
+     * <p>
+     * Il cavallo percorre 10 passi, dormendo per {@code sleepTime} millisecondi tra un passo e l’altro.
+     * Se viene interrotto, termina la corsa segnalando di essere stato “azzoppato”.
+     * </p>
+     */
     @Override
     public void run() {
         System.out.println("Cavallo " + name + " inizia la corsa!");
@@ -20,6 +52,8 @@ public class Cavallo extends Thread {
             }
             System.out.println(name + " cavalca - passo " + i);
         }
+
+        // Aggiorna il vincitore in modo sincronizzato
         synchronized (Main.class) {
             if (Main.getFirst() == null) {
                 Main.setFirst(name);
@@ -27,19 +61,36 @@ public class Cavallo extends Thread {
         }
     }
 
+    /**
+     * Restituisce il tempo di pausa tra i passi del cavallo.
+     *
+     * @return tempo di pausa (in millisecondi)
+     */
     protected int getSleepTime() {
         return sleepTime;
     }
 
+    /**
+     * Imposta il tempo di pausa tra i passi del cavallo.
+     *
+     * @param sleepTime tempo di pausa (in millisecondi)
+     */
     protected void setSleepTime(int sleepTime) {
         this.sleepTime = sleepTime;
     }
-    ////
 
+    /**
+     * Restituisce il nome del cavallo.
+     *
+     * @return nome del cavallo
+     */
     public String getHorseName() {
         return name;
     }
 
+    /**
+     * Interrompe il thread del cavallo, simulando un’interruzione della corsa.
+     */
     public void setInterrupt() {
         interrupt();
     }
